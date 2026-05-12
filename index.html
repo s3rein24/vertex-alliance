@@ -1,0 +1,547 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VertexAlliance</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        background: #f8f9fb;
+        color: #1e1e1e;
+        line-height: 1.6;
+      }
+
+      .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: auto;
+      }
+
+      header {
+        background: white;
+        padding: 20px 0;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      }
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .logo img {
+        width: 70px;
+      }
+
+      .logo-text h1 {
+        font-size: 24px;
+        color: #032c72;
+      }
+
+      .logo-text p {
+        font-size: 12px;
+        color: #666;
+        letter-spacing: 2px;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: #032c72;
+        font-weight: 600;
+        transition: 0.3s;
+      }
+
+      .nav-links a:hover {
+        color: #0b5ed7;
+      }
+
+      .hero {
+        min-height: 90vh;
+        display: flex;
+        align-items: center;
+        background: linear-gradient(to right, #032c72, #0f4db8);
+        color: white;
+        padding: 60px 0;
+      }
+
+      .hero-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        align-items: center;
+        gap: 40px;
+      }
+
+      .hero-text h2 {
+        font-size: 52px;
+        line-height: 1.2;
+        margin-bottom: 20px;
+      }
+
+      .hero-text p {
+        font-size: 18px;
+        margin-bottom: 30px;
+        color: #e6e6e6;
+      }
+
+      .btn {
+        display: inline-block;
+        background: white;
+        color: #032c72;
+        padding: 14px 28px;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: bold;
+        transition: 0.3s;
+      }
+
+      .btn:hover {
+        background: #dce7ff;
+      }
+
+      .hero-image img {
+        width: 100%;
+        max-width: 500px;
+        display: block;
+        margin: auto;
+        background: white;
+        border-radius: 20px;
+        padding: 20px;
+      }
+
+      section {
+        padding: 80px 0;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 50px;
+      }
+
+      .section-title h2 {
+        font-size: 40px;
+        color: #032c72;
+        margin-bottom: 10px;
+      }
+
+      .section-title p {
+        color: #666;
+        max-width: 700px;
+        margin: auto;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 25px;
+      }
+
+      .card {
+        background: white;
+        padding: 30px;
+        border-radius: 16px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+        transition: 0.3s;
+      }
+
+      .card:hover {
+        transform: translateY(-6px);
+      }
+
+      .card h3 {
+        color: #032c72;
+        margin-bottom: 15px;
+      }
+
+      .pricing-wrapper {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 30px;
+      }
+
+      .pricing-card {
+        background: white;
+        border-radius: 20px;
+        padding: 40px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+      }
+
+      .pricing-card h3 {
+        color: #032c72;
+        margin-bottom: 20px;
+        font-size: 30px;
+      }
+
+      .price {
+        font-size: 42px;
+        color: #0f4db8;
+        margin-bottom: 20px;
+        font-weight: bold;
+      }
+
+      .pricing-card ul {
+        list-style: none;
+      }
+
+      .pricing-card ul li {
+        margin-bottom: 12px;
+        padding-left: 20px;
+        position: relative;
+      }
+
+      .pricing-card ul li::before {
+        content: "✔";
+        position: absolute;
+        left: 0;
+        color: #0f4db8;
+      }
+
+      .cta {
+        background: #032c72;
+        color: white;
+        text-align: center;
+        border-radius: 20px;
+        padding: 60px 30px;
+      }
+
+      .cta h2 {
+        font-size: 40px;
+        margin-bottom: 20px;
+      }
+
+      .cta p {
+        max-width: 700px;
+        margin: auto auto 30px;
+        color: #d8d8d8;
+      }
+
+      footer {
+        background: #021d4b;
+        color: white;
+        padding: 40px 0;
+        text-align: center;
+        margin-top: 80px;
+      }
+
+      footer p {
+        opacity: 0.8;
+      }
+
+      @media (max-width: 768px) {
+        .hero-text h2 {
+          font-size: 36px;
+        }
+
+        .section-title h2 {
+          font-size: 30px;
+        }
+
+        .cta h2 {
+          font-size: 32px;
+        }
+
+        nav {
+          flex-direction: column;
+        }
+
+        .nav-links {
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div class="container">
+        <nav>
+          <div class="logo">
+            <img src="logo.png" alt="VertexAlliance Logo" />
+            <div class="logo-text">
+              <h1>VertexAlliance</h1>
+              <p>CONNECTING VISION. DELIVERING RESULTS.</p>
+            </div>
+          </div>
+
+          <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#engagement">Engagement</a>
+            <a href="#why-us">Why Us</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="container hero-content">
+        <div class="hero-text">
+          <h2>Connecting Vision. Delivering Results.</h2>
+          <p>
+            VertexAlliance is a Philippine-based virtual staffing agency helping
+            businesses worldwide source, screen, onboard, and manage highly
+            qualified Virtual Assistants.
+          </p>
+
+          <a href="#services" class="btn">Explore Services</a>
+        </div>
+
+        <div class="hero-image">
+          <img src="logo.png" alt="VertexAlliance" />
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-title">
+          <h2>Who We Are</h2>
+          <p>
+            We take the entire recruitment process off your plate — allowing you
+            to focus on growing your business while we handle sourcing,
+            onboarding, payroll, contracts, and coordination.
+          </p>
+        </div>
+
+        <div class="grid">
+          <div class="card">
+            <h3>Our Story</h3>
+            <p>
+              We were Virtual Assistants ourselves. We experienced firsthand the
+              struggles businesses face when trying to hire reliable remote
+              staff.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Our Mission</h3>
+            <p>
+              To help businesses save time, reduce hiring stress, and connect
+              them with pre-vetted professionals ready to contribute.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Global Support</h3>
+            <p>
+              Our staff work directly and exclusively for your business while
+              VertexAlliance handles all administrative matters in the
+              background.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <div class="section-title">
+          <h2>Our Services</h2>
+          <p>
+            Full-service staffing support from recruitment to payroll
+            management.
+          </p>
+        </div>
+
+        <div class="grid">
+          <div class="card">
+            <h3>Sourcing & Recruitment</h3>
+            <p>
+              We find and screen the right staff so you avoid sorting through
+              hundreds of applications.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Vetting & Interviews</h3>
+            <p>
+              Multi-stage screening ensures only qualified and
+              communication-ready candidates reach you.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Onboarding Support</h3>
+            <p>
+              We prepare staff before day one so they are aligned with your
+              processes.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Payroll Management</h3>
+            <p>
+              We handle payroll disbursements within 24–48 hours after receiving
+              payment.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Contract Management</h3>
+            <p>
+              All agreements are professionally structured and managed by
+              VertexAlliance.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Ongoing Coordination</h3>
+            <p>
+              We remain your point of contact for issues, replacements, and
+              ongoing support.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="engagement">
+      <div class="container">
+        <div class="section-title">
+          <h2>Engagement Options</h2>
+          <p>
+            Choose the setup that best fits your operational and legal
+            requirements.
+          </p>
+        </div>
+
+        <div class="pricing-wrapper">
+          <div class="pricing-card">
+            <h3>COR</h3>
+            <div class="price"></div>
+
+            <ul>
+              <li>Independent contractor setup</li>
+              <li>No employer-employee relationship</li>
+              <li>VertexAlliance manages payroll</li>
+              <li>Flexible & project-based setup</li>
+              <li>Ideal for startups & part-time staffing</li>
+            </ul>
+          </div>
+
+          <div class="pricing-card">
+            <h3>EOR</h3>
+            <div class="price"></div>
+
+            <ul>
+              <li>Formal employment structure</li>
+              <li>Compliance & legal protection</li>
+              <li>Employment contracts managed</li>
+              <li>Payroll & statutory handling</li>
+              <li>Ideal for long-term staffing</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="why-us">
+      <div class="container">
+        <div class="section-title">
+          <h2>Why Choose Us</h2>
+          <p>
+            We simplify hiring and staffing management so you can focus on
+            scaling your business.
+          </p>
+        </div>
+
+        <div class="grid">
+          <div class="card">
+            <h3>Save Time</h3>
+            <p>
+              No more endless job postings or interviews — we handle everything.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Pre-Vetted Talent</h3>
+            <p>
+              Every staff member is screened thoroughly before being presented
+              to you.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Replacement Guarantee</h3>
+            <p>
+              If a placement doesn’t work out, we’ll find a suitable
+              replacement.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Scale Easily</h3>
+            <p>
+              As your business grows, we grow with you while improving your
+              rates.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container">
+      <div class="cta">
+        <h2>Ready to Build Your Remote Team?</h2>
+        <p>
+          Let VertexAlliance handle recruitment, onboarding, payroll, and
+          compliance while you focus on growth.
+        </p>
+
+       <a 
+  href="https://mail.google.com/mail/?view=cm&fs=1&to=vertexa2026@gmail.com&su=VertexAlliance Service Inquiry&body=Hi VertexAlliance,%0D%0A%0D%0AI would like to inquire about your services."
+  target="_blank"
+  class="btn"
+>
+  Message Us
+</a>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <h2>VertexAlliancePH</h2>
+        <p>Connecting Vision. Delivering Results.</p>
+        <br />
+        <p>© 2026 VertexAlliancePH. All Rights Reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      const links = document.querySelectorAll(".nav-links a");
+
+      links.forEach((link) => {
+        link.addEventListener("click", function () {
+          document.querySelector(this.getAttribute("href")).scrollIntoView({
+            behavior: "smooth",
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
